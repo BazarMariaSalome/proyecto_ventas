@@ -146,8 +146,12 @@ def registrar_venta():
 
     return render_template_string(formulario_html)
 
-if __name__ == '__main__':
-    if not os.path.exists(EXCEL_FILE):
+
+	if __name__ == '__main__':
+    port = int(os.environ.get('PORT', 5000))  # Toma el puerto de la variable de entorno
+    app.run(host='0.0.0.0', port=port, debug=True)
+	
+   if not os.path.exists(EXCEL_FILE):
         print(f"⛔ El archivo '{EXCEL_FILE}' no existe. Crea uno con hojas 'clientes' y 'productos'.")
     else:
         app.run(debug=True)
